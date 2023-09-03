@@ -75,6 +75,7 @@ function handleDownloadButtonClick() {
                   // newVideoUrls.push(videoElement.src)
                   const videoUrl = videoElement.src;
                   const elementTitle = element.textContent.trim();
+
                   chrome.runtime.sendMessage({ elementTitle, videoUrl });
                   // alert(newVideoUrls)
                   // Check if there are more elements to click
@@ -85,6 +86,11 @@ function handleDownloadButtonClick() {
           }
 
           const elements = document.querySelectorAll('ul.classroom-toc-section__items li a div > div.classroom-toc-item__title');
+          // alert("elements "+elements.length)
+          if (elements.length < 1){
+            const invalid_page = "no_content"
+            chrome.runtime.sendMessage({ invalid_page });
+          }
 
           const liElements = Array.from(elements).filter((element) => {
             const titleText = element.textContent.trim();
@@ -113,7 +119,7 @@ function handleDownloadButtonClick() {
 
 
 chrome.runtime.onMessage.addListener((message) => {
-  if (message.videoUrl) {
+  if (message.invalid_page !== "no_content") {
     const videoListElement = document.getElementById("videoList");
     urlList.push(message.videoUrl);
     titleList.push(message.elementTitle);
@@ -146,10 +152,10 @@ chrome.runtime.onMessage.addListener((message) => {
 
     videoListElement.innerHTML = listItemHTML;
   }
-  // else {
-  //   const videoListElement = document.getElementById("videoList");
-  //   videoListElement.innerHTML = "<h2>No video found on this page.</h2>";
-  // }
+  else {
+    const videoListElement = document.getElementById("videoList");
+    videoListElement.innerHTML = "<h4>No video found</h4> <i>Note: it works only with LinkedIn learning.</i>";
+  }
 });
 
 
