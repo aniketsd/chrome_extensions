@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Video Extractor</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      width: 400px;
+      padding: 20px;
+    }
+
+    h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+
+    #downloadButton {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #0073e6;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    #downloadButton:hover {
+      background-color: #0059b3;
+    }
+
+    #videoUrl {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    #videoContainer {
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    #videoList {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    #videoList li {
+      margin-bottom: 10px;
+      padding: 5px;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    #videoList h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    .highlight {
+            font-weight: bold;
+            background-color: #0073e6;
+            color: white;
+    }
+
+    /* styles.css */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 34px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px; /* Reduce the width of the switch */
+    height: 20px; /* Reduce the height of the switch */
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 12px; /* Make the slider rounder */
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px; /* Reduce the height of the slider toggle */
+    width: 16px; /* Reduce the width of the slider toggle */
+    left: 2px; /* Adjust the position of the slider toggle */
+    bottom: 2px; /* Adjust the position of the slider toggle */
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%; /* Make the slider toggle round */
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+.container {
+       display: flex;
+       align-items: center;
+   }
+
+   .download-container {
+       display: flex;
+       align-items: center;
+       margin-right: 5px; /* Maximum 5px space */
+   }
+
+   .download-container .switch {
+       margin-right: 5px; /* Maximum 5px space */
+   }
+
+  </style>
+</head>
+<body>
+  <h2><span class="highlight">&nbsp;in&nbsp;</span> Learning</h2>
+  <br><br><br>
+  <div class="container">
+    <a id="downloadButton" href="#">Extract Video URLs</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+      <div class="download-container">
+          <label class="switch">
+              <input type="checkbox" id="downloadToggle">
+              <span class="slider"></span>
+          </label>
+          <a href="#" id="downloadLink" download>Download File</a>
+      </div>
+  </div>
+  <div id="videoContainer">
+  <ul id="videoList">
+    <!-- Video URLs and titles will be added here dynamically -->
+  </ul>
+</div>
+  <script src="popup.js"></script>
+</body>
+</html>
