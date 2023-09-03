@@ -133,6 +133,15 @@ input:checked + .slider:before {
        margin-right: 5px; /* Maximum 5px space */
    }
 
+   .popup-resize-handle {
+     width: 10px;
+     height: 10px;
+     background-color: #0073e6;
+     position: absolute;
+     right: 0;
+     bottom: 0;
+     cursor: nwse-resize; /* Set cursor style for resizing */
+   }
   </style>
 </head>
 <body>
@@ -153,7 +162,9 @@ input:checked + .slider:before {
   <ul id="videoList">
     <!-- Video URLs and titles will be added here dynamically -->
   </ul>
+  <div class="popup-resize-handle" id="resizeHandle"></div>
 </div>
   <script src="popup.js"></script>
+    <script src="resize.js"></script>
 </body>
 </html>
